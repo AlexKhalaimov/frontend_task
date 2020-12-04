@@ -1,0 +1,296 @@
+.header {
+  padding: 1.25rem 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+  transition: all .3s ease-in-out;
+  &.scrolled {
+    background-color: #700631;
+  }
+
+  &__container{
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 15px;
+    @media (min-width: $tablet-landscape) {
+      max-width: 790px;
+    }
+  }
+  &__logo {
+    margin-right: 3rem;
+    &-link {
+      color: $colorWhite;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+  }
+  &__inner {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 99;
+    height: 100vh;
+    background-color: #700631;
+    padding: 1rem;
+    left: -100%;
+    transition: all .3s ease-in-out;
+    &.menu-show {
+      left: 0;
+    }
+    @media screen and (min-width: $tablet-landscape) {
+      display: flex;
+      width: 100%;
+      position: static;
+      height: auto;
+      background-color: transparent;
+    }
+  }
+  &__login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media screen and (min-width: $tablet-landscape) {
+      align-items: center;
+      margin-left: auto;
+      flex-direction: row;
+    }
+    &-link {
+      text-transform: capitalize;
+      font-size: 1rem;
+      padding: 0 1rem 1rem;
+      color: $colorWhite;
+      @media screen and (min-width: $tablet-landscape) {
+        font-size: .875rem;
+        padding: .5rem 1rem;
+        border: 1px solid transparent;
+      }
+      &_register {
+        @media screen and (min-width: $tablet-landscape) {
+          transition: all .3s ease-in-out;
+          border-color: $colorWhite;
+          &:hover {
+            background-color: $colorWhite;
+            color: $colorBlack;
+          }
+        }
+
+      }
+    }
+  }
+
+}
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0 1rem;
+  @media screen and (min-width: $tablet-landscape) {
+    justify-content: flex-start;
+    margin: 0;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &::after {
+      content: '';
+      display: block;
+      width: 5rem;
+      height: 2px;
+      background-color: $colorWhite;
+      @media screen and (min-width: $tablet-landscape) {
+        display: none;
+      }
+    }
+    @media screen and (min-width: $tablet-landscape) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+  &__list-item {
+    padding-bottom: 1rem;
+    @media screen and (min-width: $tablet-landscape) {
+      padding-bottom: 0;
+    }
+  }
+  &__link {
+    text-transform: capitalize;
+    color: $colorWhite;
+    font-size: 1rem;
+    padding: 1rem;
+    @media screen and (min-width: $tablet-landscape) {
+      padding: .5rem 1rem;
+      font-size: .875rem;
+      position: relative;
+      &:after {
+        background: none repeat scroll 0 0 transparent;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 2px;
+        left: 50%;
+        position: absolute;
+
+        transition: width 0.3s ease 0s, left 0.3s ease 0s;
+        width: 0;
+      }
+      &:hover:after {
+        background: #fff;
+        width: 100%;
+        left: 0;
+      }
+    }
+  }
+}
+
+
+
+.hamburger {
+  padding: 0;
+  display: inline-block;
+  cursor: pointer;
+  transition-property: opacity, filter;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: 0;
+  overflow: visible;
+  outline: 0;
+  height: 18px;
+  margin-left: auto;
+  position: relative;
+  z-index: 100;
+  @media screen and (min-width: $tablet-landscape) {
+    margin: 3px 0 0 0;
+  }
+}
+
+.hamburger:focus, .hamburger:active {
+  border: 0;
+}
+
+@media screen and (min-width: 567px) {
+  .hamburger {
+    height:27px;
+    margin-top: 0;
+  }
+}
+
+.hamburger:hover {
+  opacity: 0.7;
+}
+
+.hamburger.is-active:hover {
+  opacity: 0.7;
+}
+
+.hamburger.is-active .hamburger-inner,.hamburger.is-active .hamburger-inner::before,.hamburger.is-active .hamburger-inner::after {
+  background-color: $colorWhite;
+}
+
+.hamburger-box {
+  width: 26px;
+  height: 18px;
+  display: inline-block;
+  position: relative;
+}
+
+@media screen and (min-width: 567px) {
+  .hamburger-box {
+    width:40px;
+    height: 24px;
+  }
+}
+
+.hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: -2px;
+}
+
+.hamburger-inner,.hamburger-inner::before,.hamburger-inner::after {
+  width: 26px;
+  height: 2px;
+  background-color: $colorWhite;
+  border-radius: 4px;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+
+@media screen and (min-width: 567px) {
+  .hamburger-inner,.hamburger-inner::before,.hamburger-inner::after {
+    width:40px;
+    height: 4px;
+  }
+}
+
+.hamburger-inner::before,.hamburger-inner::after {
+  content: "";
+  display: block;
+}
+
+.hamburger-inner::before {
+  top: -6px;
+}
+
+@media screen and (min-width: 567px) {
+  .hamburger-inner::before {
+    top:-10px;
+  }
+}
+
+.hamburger-inner::after {
+  bottom: -6px;
+}
+
+@media screen and (min-width: 567px) {
+  .hamburger-inner::after {
+    bottom:-10px;
+  }
+}
+
+.hamburger--squeeze .hamburger-inner {
+  transition-duration: 0.075s;
+  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.hamburger--squeeze .hamburger-inner::before {
+  transition: top 0.075s 0.12s ease, opacity 0.075s ease;
+}
+
+.hamburger--squeeze .hamburger-inner::after {
+  transition: bottom 0.075s 0.12s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.hamburger--squeeze.is-active .hamburger-inner {
+  transform: rotate(45deg);
+  transition-delay: 0.12s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.hamburger--squeeze.is-active .hamburger-inner::before {
+  top: 0;
+  opacity: 0;
+  transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+}
+
+.hamburger--squeeze.is-active .hamburger-inner::after {
+  bottom: 0;
+  transform: rotate(-90deg);
+  transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.scroll-down .header{
+  transform: translate3d(0, -100%, 0);
+}
+
+.scroll-up .header{
+  transform: none;
+}
